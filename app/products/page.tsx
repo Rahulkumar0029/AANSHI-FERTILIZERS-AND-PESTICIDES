@@ -1,5 +1,6 @@
 "use client";
 
+export const dynamic = "force-dynamic";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,6 +42,8 @@ export default function Products() {
 
     // Sync category from URL
     useEffect(() => {
+        if (!searchParams) return;
+
         const categoryFromURL = searchParams.get("category");
 
         if (categoryFromURL) {
@@ -125,8 +128,8 @@ export default function Products() {
                                     router.push(`/products?category=${cat}`);
                                 }}
                                 className={`px-5 py-2 rounded-full text-sm font-bold transition-all ${selectedCategory === cat
-                                        ? "bg-primary text-white shadow-md"
-                                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                                    ? "bg-primary text-white shadow-md"
+                                    : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                                     }`}
                             >
                                 {cat}
