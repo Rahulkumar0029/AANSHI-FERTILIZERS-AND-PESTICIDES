@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
 // 🔹 Fetch product by ID
 async function getProduct(id: string) {
-    const res = await fetch("http://localhost:3000/api/products", {
+    const res = await fetch("https://aanshi-fertilizers-pesticidess.vercel.app/api/products", {
         cache: "no-store",
     });
 
