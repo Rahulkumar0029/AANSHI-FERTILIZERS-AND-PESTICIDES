@@ -16,10 +16,10 @@ async function saveProducts(products: any[]) {
 // ✅ UPDATE PRODUCT
 export async function PUT(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: { id: string } }  // ← fix here
 ): Promise<Response> {
   try {
-    const { id } = await context.params;
+    const { id } = context.params;  // ← no await needed
     const updatedProduct = await request.json();
     const products = await getProducts();
 
@@ -40,10 +40,10 @@ export async function PUT(
 // ✅ DELETE PRODUCT
 export async function DELETE(
   request: NextRequest,
-  context: { params: Promise<{ id: string }> }
+  context: { params: { id: string } }  // ← fix here
 ): Promise<Response> {
   try {
-    const { id } = await context.params;
+    const { id } = context.params;  // ← no await needed
     const products = await getProducts();
 
     const filteredProducts = products.filter((p: any) => p.id !== parseInt(id));
